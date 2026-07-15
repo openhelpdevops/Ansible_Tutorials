@@ -44,7 +44,7 @@ Authentication is performed using:
 
 ---
 
-# 2. Color Architecture Diagram
+# 2. Architecture Diagram
 
 ```mermaid
 flowchart LR
