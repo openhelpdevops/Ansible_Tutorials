@@ -399,44 +399,11 @@ chmod 0644 /etc/ansible/ansible.cfg
 
 ---
 
-# 9. Configure Kerberos SSH Globally on the IPA Server
-
-Create:
+# 9. Check uptime
 
 ```bash
-vi /etc/ssh/ssh_config.d/50-kubernetes-gssapi.conf
+uptime
 ```
-
-Add:
-
-```sshconfig
-Host kube1 kube2 kube3 kube4 kube5 kube6 kube7
-    HostName %h.openhelp.net
-    GSSAPIAuthentication yes
-    PreferredAuthentications gssapi-with-mic
-    PubkeyAuthentication no
-    PasswordAuthentication no
-    KbdInteractiveAuthentication no
-    GSSAPIDelegateCredentials no
-
-Host kube1.openhelp.net kube2.openhelp.net kube3.openhelp.net kube4.openhelp.net kube5.openhelp.net kube6.openhelp.net kube7.openhelp.net
-    GSSAPIAuthentication yes
-    PreferredAuthentications gssapi-with-mic
-    PubkeyAuthentication no
-    PasswordAuthentication no
-    KbdInteractiveAuthentication no
-    GSSAPIDelegateCredentials no
-```
-
-## Restart SSHD
-
-```bash
-[root@ipa ssh_config.d]# systemctl restart sshd
-```
-
-> The files `50-kerberos-gssapi.conf` and `50-kubernetes-gssapi.conf` contain similar client settings. Both are retained because they were part of your original procedure. In a cleaned-up deployment, one client file is usually enough.
-
----
 
 # 10. Create the FreeIPA Administrator Group
 
