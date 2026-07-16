@@ -2,6 +2,19 @@
 
 ## Complete Architecture, Configuration, Authentication Flow, and Examples
 
+Ansible is an open-source, agentless automation and configuration-management tool. It is commonly used for server provisioning, software installation, configuration management, application deployment and operational automation.
+
+Ansible uses a control-node and managed-node architecture. Ansible is installed only on the control node. The managed Linux servers do not require a permanent Ansible agent.
+
+When we run an ad-hoc command or playbook, Ansible first reads the inventory to identify the target servers. It then connects to those servers using the SSH protocol. Authentication can be performed using SSH keys, passwords, Kerberos GSSAPI or SSH certificates.
+
+After establishing the connection, Ansible prepares the required module, transfers it temporarily to the managed server and normally executes it using Python. If administrative access is required, Ansible uses privilege escalation through sudo, which is called become in Ansible.
+
+The remote module checks the current state, performs the required change and returns the result to the control node in JSON format. Ansible then displays whether the task was successful, changed, failed or unreachable.
+
+An important feature of Ansible is idempotency. This means that running the same playbook multiple times should produce the same desired state without repeatedly making unnecessary changes.
+
+
 This guide documents the complete Ansible setup used for managing the Kubernetes servers:
 
 - `kube1.openhelp.net`
